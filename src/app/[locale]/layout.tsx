@@ -30,6 +30,9 @@ export async function generateMetadata({
       template: `%s | ${site.name}`,
     },
     description: t("homeDescription"),
+    verification: {
+      google: "lH7KFCddpUq1gOJtS2fLDX1KumM_RCb5g_hYuoB4oVY",
+    },
     openGraph: {
       siteName: site.name,
       locale: locale === "tr" ? "tr_TR" : "en_US",
