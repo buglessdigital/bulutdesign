@@ -1,6 +1,6 @@
 export const site = {
   name: "Bulut Design",
-  domain: "https://mersinicmimarlik.com",
+  domain: "https://www.designbulut.com",
   phone: "0545 765 01 67",
   phoneIntl: "+905457650167",
   whatsapp: "https://wa.me/905457650167",

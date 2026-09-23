@@ -23,6 +23,13 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
 
+  const ogImage = {
+    url: locale === "tr" ? "/og/tr.jpg" : "/og/en.jpg",
+    width: 1200,
+    height: 630,
+    alt: t("homeTitle"),
+  };
+
   return {
     metadataBase: new URL(site.domain),
     title: {
@@ -30,13 +37,22 @@ export async function generateMetadata({
       template: `%s | ${site.name}`,
     },
     description: t("homeDescription"),
+    applicationName: site.name,
     verification: {
-      google: "lH7KFCddpUq1gOJtS2fLDX1KumM_RCb5g_hYuoB4oVY",
+      google: [
+        "lH7KFCddpUq1gOJtS2fLDX1KumM_RCb5g_hYuoB4oVY",
+        "FdrahSU6-TDJls360vIoWGtm0MJlY4vm5hRyxaO1WHc",
+      ],
     },
     openGraph: {
       siteName: site.name,
       locale: locale === "tr" ? "tr_TR" : "en_US",
       type: "website",
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [ogImage],
     },
   };
 }
@@ -48,6 +64,8 @@ const localBusinessJsonLd = {
   description:
     "Mersin merkezli iç mimarlık ve mimari tasarım stüdyosu. Konut, ticari, kentsel tasarım ve iç mimari projeler.",
   url: site.domain,
+  logo: `${site.domain}/bulut-design-logo.png`,
+  image: `${site.domain}/og/tr.jpg`,
   telephone: site.phoneIntl,
   email: site.email,
   address: {
